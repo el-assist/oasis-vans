@@ -33,122 +33,7 @@
   input, textarea, select, button { font-family: inherit; }
   @keyframes heroDrift { from { background-size: 104% auto, cover; } to { background-size: 104% auto, 116%; } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
-
-  /* ── Mobile hamburger nav ── */
-  .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 60; }
-  .mobile-toggle svg { display: block; }
-  .mobile-toggle .close-icon { display: none; }
-  .mobile-toggle.open .burger-icon { display: none; }
-  .mobile-toggle.open .close-icon { display: block; }
-
-  @media (max-width: 768px) {
-    .mobile-toggle { display: block; }
-    header nav {
-      position: fixed; top: 0; right: 0; bottom: 0;
-      width: 280px; max-width: 85vw;
-      flex-direction: column; align-items: stretch; gap: 0 !important;
-      background: #F7EEDC; padding: 90px 32px 40px;
-      box-shadow: -4px 0 24px rgba(0,0,0,0.15);
-      transform: translateX(100%); transition: transform 0.3s ease;
-      z-index: 55;
-    }
-    header nav.open { transform: translateX(0); }
-    header nav a {
-      display: block; padding: 16px 0; font-size: 16px !important;
-      border-bottom: 1px solid rgba(71,86,60,0.12);
-    }
-    header nav a:last-child {
-      margin-top: 12px; text-align: center; border-bottom: none;
-    }
-    .mobile-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.4);
-      z-index: 50; display: none;
-    }
-    .mobile-overlay.open { display: block; }
-
-    /* Reduce padding on mobile */
-    header { padding-left: 20px !important; padding-right: 20px !important; }
-    #top { padding: 40px 20px !important; min-height: 92vh !important; }
-    #top h1 { font-size: 36px !important; }
-    #top p { font-size: 16px !important; }
-    #top .hero-buttons { flex-direction: column; }
-    #top .hero-buttons a { text-align: center; }
-
-    /* Stats bar */
-    section[style*="repeat(auto-fit, minmax(200px"] { 
-      grid-template-columns: 1fr 1fr !important; 
-    }
-
-    /* About section */
-    #builder { padding: 60px 20px !important; gap: 32px !important; }
-    #builder img { height: 360px !important; }
-    #builder > div:last-child h2 { font-size: 28px !important; }
-    #builder > div:first-child > div { left: 0 !important; bottom: -12px !important; }
-
-    /* Services grid */
-    section[style*="background: #47563C"][style*="padding: 90px"] { padding: 60px 20px !important; }
-
-    /* Gallery */
-    #work { padding: 60px 20px !important; }
-    #work > div:last-child {
-      grid-template-columns: 1fr 1fr !important;
-      grid-auto-rows: 180px !important;
-    }
-    #work figure[style*="grid-column: span 2"][style*="grid-row: span 2"] {
-      grid-column: span 2 !important; grid-row: span 2 !important;
-    }
-    #work figure[style*="grid-column: span 2"]:not([style*="grid-row: span 2"]) {
-      grid-column: span 2 !important;
-    }
-
-    /* Reviews */
-    #reviews { padding: 60px 20px !important; }
-
-    /* Contact */
-    #contact { padding: 60px 20px !important; }
-    #contact form > div[style*="grid-template-columns: 1fr 1fr"] {
-      grid-template-columns: 1fr !important;
-    }
-
-    /* Footer */
-    footer { padding: 32px 20px !important; flex-direction: column; align-items: flex-start !important; gap: 16px !important; }
-  }
-
-  @media (max-width: 480px) {
-    #work > div:last-child {
-      grid-template-columns: 1fr !important;
-      grid-auto-rows: 240px !important;
-    }
-    #work figure[style*="grid-column: span 2"] {
-      grid-column: span 1 !important;
-    }
-    #work figure[style*="grid-row: span 2"] {
-      grid-row: span 1 !important;
-    }
-    section[style*="repeat(auto-fit, minmax(200px"] {
-      grid-template-columns: 1fr 1fr !important;
-    }
-  }
 </style>
-<script>
-function toggleMobileNav() {
-  var nav = document.querySelector('header nav');
-  var btn = document.querySelector('.mobile-toggle');
-  var overlay = document.querySelector('.mobile-overlay');
-  var isOpen = nav.classList.contains('open');
-  nav.classList.toggle('open');
-  btn.classList.toggle('open');
-  overlay.classList.toggle('open');
-  document.body.style.overflow = isOpen ? '' : 'hidden';
-}
-// Close nav when a link is clicked
-document.addEventListener('click', function(e) {
-  if (e.target.closest('header nav a')) {
-    var nav = document.querySelector('header nav');
-    if (nav && nav.classList.contains('open')) toggleMobileNav();
-  }
-});
-</script>
 </helmet>
 
 <div style="max-width: 100%; overflow-x: hidden">
@@ -158,11 +43,6 @@ document.addEventListener('click', function(e) {
       <img src="uploads/logo.png" alt="Oasis Van Fit Outs" style="width: 48px; height: 48px; display: block" />
       <span style="font-family: 'Zilla Slab', serif; font-weight: 700; font-size: 17px; letter-spacing: 0.06em; text-transform: uppercase; color: #47563C; line-height: 1.1">Oasis<br /><span style="font-size: 11px; letter-spacing: 0.22em; color: #7A6A4F">Van Fit Outs</span></span>
     </a>
-    <div class="mobile-overlay" onclick="toggleMobileNav()"></div>
-    <button class="mobile-toggle" onclick="toggleMobileNav()" aria-label="Menu">
-      <svg class="burger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#47563C" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
-      <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#47563C" stroke-width="2"><path d="M6 6l12 12M6 18L18 6"/></svg>
-    </button>
     <nav style="display: flex; align-items: center; gap: 30px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase">
       <a href="#builder" style="color: #47563C">The workshop</a>
       <a href="#work" style="color: #47563C">Recent work</a>

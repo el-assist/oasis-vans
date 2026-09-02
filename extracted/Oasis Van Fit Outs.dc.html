@@ -6,18 +6,6 @@
 <script src="./support.js"></script>
 </head>
 <body>
-<template id="__bundler_thumbnail" data-bg-color="#47563C">
-  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#47563C"/>
-    <circle cx="600" cy="400" r="230" fill="#E2661F"/>
-    <path d="M330 470h540l-60 90H390z" fill="#F7EEDC"/>
-    <rect x="420" y="330" width="360" height="140" rx="18" fill="#F7EEDC"/>
-    <rect x="452" y="362" width="120" height="76" rx="8" fill="#47563C"/>
-    <rect x="620" y="362" width="128" height="76" rx="8" fill="#47563C"/>
-    <circle cx="440" cy="590" r="42" fill="#F7EEDC"/>
-    <circle cx="760" cy="590" r="42" fill="#F7EEDC"/>
-  </svg>
-</template>
 <x-dc>
 <helmet>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -31,139 +19,24 @@
   html { scroll-behavior: smooth; }
   ::selection { background: #E2661F; color: #F7EEDC; }
   input, textarea, select, button { font-family: inherit; }
-  @keyframes heroDrift { from { background-size: 104% auto, cover; } to { background-size: 104% auto, 116%; } }
+  @keyframes heroDrift { from { background-size: 104% auto, cover; } to { background-size: 104% auto, 118% 118%; } }
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
-
-  /* ── Mobile hamburger nav ── */
-  .mobile-toggle { display: none; background: none; border: none; cursor: pointer; padding: 8px; z-index: 60; }
-  .mobile-toggle svg { display: block; }
-  .mobile-toggle .close-icon { display: none; }
-  .mobile-toggle.open .burger-icon { display: none; }
-  .mobile-toggle.open .close-icon { display: block; }
-
-  @media (max-width: 768px) {
-    .mobile-toggle { display: block; }
-    header nav {
-      position: fixed; top: 0; right: 0; bottom: 0;
-      width: 280px; max-width: 85vw;
-      flex-direction: column; align-items: stretch; gap: 0 !important;
-      background: #F7EEDC; padding: 90px 32px 40px;
-      box-shadow: -4px 0 24px rgba(0,0,0,0.15);
-      transform: translateX(100%); transition: transform 0.3s ease;
-      z-index: 55;
-    }
-    header nav.open { transform: translateX(0); }
-    header nav a {
-      display: block; padding: 16px 0; font-size: 16px !important;
-      border-bottom: 1px solid rgba(71,86,60,0.12);
-    }
-    header nav a:last-child {
-      margin-top: 12px; text-align: center; border-bottom: none;
-    }
-    .mobile-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.4);
-      z-index: 50; display: none;
-    }
-    .mobile-overlay.open { display: block; }
-
-    /* Reduce padding on mobile */
-    header { padding-left: 20px !important; padding-right: 20px !important; }
-    #top { padding: 40px 20px !important; min-height: 92vh !important; }
-    #top h1 { font-size: 36px !important; }
-    #top p { font-size: 16px !important; }
-    #top .hero-buttons { flex-direction: column; }
-    #top .hero-buttons a { text-align: center; }
-
-    /* Stats bar */
-    section[style*="repeat(auto-fit, minmax(200px"] { 
-      grid-template-columns: 1fr 1fr !important; 
-    }
-
-    /* About section */
-    #builder { padding: 60px 20px !important; gap: 32px !important; }
-    #builder img { height: 360px !important; }
-    #builder > div:last-child h2 { font-size: 28px !important; }
-    #builder > div:first-child > div { left: 0 !important; bottom: -12px !important; }
-
-    /* Services grid */
-    section[style*="background: #47563C"][style*="padding: 90px"] { padding: 60px 20px !important; }
-
-    /* Gallery */
-    #work { padding: 60px 20px !important; }
-    #work > div:last-child {
-      grid-template-columns: 1fr 1fr !important;
-      grid-auto-rows: 180px !important;
-    }
-    #work figure[style*="grid-column: span 2"][style*="grid-row: span 2"] {
-      grid-column: span 2 !important; grid-row: span 2 !important;
-    }
-    #work figure[style*="grid-column: span 2"]:not([style*="grid-row: span 2"]) {
-      grid-column: span 2 !important;
-    }
-
-    /* Reviews */
-    #reviews { padding: 60px 20px !important; }
-
-    /* Contact */
-    #contact { padding: 60px 20px !important; }
-    #contact form > div[style*="grid-template-columns: 1fr 1fr"] {
-      grid-template-columns: 1fr !important;
-    }
-
-    /* Footer */
-    footer { padding: 32px 20px !important; flex-direction: column; align-items: flex-start !important; gap: 16px !important; }
-  }
-
-  @media (max-width: 480px) {
-    #work > div:last-child {
-      grid-template-columns: 1fr !important;
-      grid-auto-rows: 240px !important;
-    }
-    #work figure[style*="grid-column: span 2"] {
-      grid-column: span 1 !important;
-    }
-    #work figure[style*="grid-row: span 2"] {
-      grid-row: span 1 !important;
-    }
-    section[style*="repeat(auto-fit, minmax(200px"] {
-      grid-template-columns: 1fr 1fr !important;
-    }
-  }
 </style>
-<script>
-function toggleMobileNav() {
-  var nav = document.querySelector('header nav');
-  var btn = document.querySelector('.mobile-toggle');
-  var overlay = document.querySelector('.mobile-overlay');
-  var isOpen = nav.classList.contains('open');
-  nav.classList.toggle('open');
-  btn.classList.toggle('open');
-  overlay.classList.toggle('open');
-  document.body.style.overflow = isOpen ? '' : 'hidden';
-}
-// Close nav when a link is clicked
-document.addEventListener('click', function(e) {
-  if (e.target.closest('header nav a')) {
-    var nav = document.querySelector('header nav');
-    if (nav && nav.classList.contains('open')) toggleMobileNav();
-  }
-});
-</script>
 </helmet>
 
 <div style="max-width: 100%; overflow-x: hidden">
 
   <header style="position: sticky; top: 0; z-index: 50; display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 14px 40px; background: rgba(247,238,220,0.92); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(71,86,60,0.14)">
     <a href="#top" style="display: flex; align-items: center; gap: 12px">
-      <img src="uploads/logo.png" alt="Oasis Van Fit Outs" style="width: 48px; height: 48px; display: block" />
+      <img src="uploads/IMG_9590%20(1).png" alt="Oasis Van Fit Outs" style="width: 48px; height: 48px; display: block" />
       <span style="font-family: 'Zilla Slab', serif; font-weight: 700; font-size: 17px; letter-spacing: 0.06em; text-transform: uppercase; color: #47563C; line-height: 1.1">Oasis<br /><span style="font-size: 11px; letter-spacing: 0.22em; color: #7A6A4F">Van Fit Outs</span></span>
     </a>
-    <div class="mobile-overlay" onclick="toggleMobileNav()"></div>
-    <button class="mobile-toggle" onclick="toggleMobileNav()" aria-label="Menu">
-      <svg class="burger-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#47563C" stroke-width="2"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
-      <svg class="close-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#47563C" stroke-width="2"><path d="M6 6l12 12M6 18L18 6"/></svg>
+    <button data-menu-btn="1" onClick="{{ toggleMenu }}" aria-label="Menu" style="display: none; align-items: center; justify-content: center; width: 46px; height: 46px; background: none; border: 1px solid rgba(71,86,60,0.3); border-radius: 999px; cursor: pointer; flex-direction: column; gap: 5px; padding: 0">
+      <span style="display: block; width: 20px; height: 1.5px; background: #47563C"></span>
+      <span style="display: block; width: 20px; height: 1.5px; background: #47563C"></span>
+      <span style="display: block; width: 20px; height: 1.5px; background: #47563C"></span>
     </button>
-    <nav style="display: flex; align-items: center; gap: 30px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase">
+    <nav data-desktop-nav="1" style="display: flex; align-items: center; gap: 30px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase">
       <a href="#builder" style="color: #47563C">The workshop</a>
       <a href="#work" style="color: #47563C">Recent work</a>
       <a href="#reviews" style="color: #47563C">Reviews</a>
@@ -171,7 +44,17 @@ document.addEventListener('click', function(e) {
     </nav>
   </header>
 
-  <section id="top" style="position: relative; min-height: 88vh; display: flex; align-items: flex-end; padding: 64px 40px; background-image: linear-gradient(to top, rgba(52,64,44,0.86) 0%, rgba(52,64,44,0.32) 45%, rgba(52,64,44,0.16) 100%), url('uploads/A7R01527.jpeg'); background-size: cover; background-position: center; animation: heroDrift 26s ease-out forwards">
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div onClick="{{ closeMenu }}" style="position: fixed; inset: 0; z-index: 90; background: rgba(52,64,44,0.97); display: grid; align-content: center; justify-items: center; gap: 8px; padding: 40px">
+      <a href="#builder" style="font-family: 'Zilla Slab', serif; font-size: 30px; color: #FDF6E7; padding: 14px 8px">The workshop</a>
+      <a href="#work" style="font-family: 'Zilla Slab', serif; font-size: 30px; color: #FDF6E7; padding: 14px 8px">Recent work</a>
+      <a href="#reviews" style="font-family: 'Zilla Slab', serif; font-size: 30px; color: #FDF6E7; padding: 14px 8px">Reviews</a>
+      <a href="#contact" style="margin-top: 16px; padding: 16px 30px; background: #E2661F; color: #FFF6E6; border-radius: 999px; font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase">Start a build</a>
+      <span style="margin-top: 24px; font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(253,246,231,0.5)">Tap anywhere to close</span>
+    </div>
+  </sc-if>
+
+  <section id="top" style="position: relative; min-height: 88vh; display: flex; align-items: flex-end; padding: 64px 40px; background-image: linear-gradient(to top, rgba(52,64,44,0.86) 0%, rgba(52,64,44,0.32) 45%, rgba(52,64,44,0.16) 100%), url('uploads/A7R01527.jpeg'); background-size: cover; background-repeat: no-repeat; background-position: center; animation: heroDrift 26s ease-out forwards">
     <div style="display: grid; gap: 28px; max-width: 900px">
       <span style="font-size: 13px; letter-spacing: 0.28em; text-transform: uppercase; color: #F0C9A0">Noosa, Australia</span>
       <h1 style="margin: 0; font-family: 'Zilla Slab', serif; font-weight: 700; font-size: clamp(44px, 6.2vw, 88px); line-height: 1.02; color: #FDF6E7; text-wrap: pretty">Vans built to be<br />lived in, not just<br />parked in.</h1>
@@ -215,7 +98,7 @@ document.addEventListener('click', function(e) {
       <p style="margin: 0; font-size: 18px; line-height: 1.7; color: #55563E">[Placeholder bio — swap in the real story.] After [X] years building kitchens and joinery on the Sunshine Coast, I converted my own HiAce for a season of chasing surf up the coast. It came back with a list of things I'd do differently, and the next one was for a friend. Word got around.</p>
       <p style="margin: 0; font-size: 18px; line-height: 1.7; color: #55563E">Oasis is still a one-bench operation in Noosa, and that's on purpose. I take on a handful of builds at a time so every van gets drawn up properly, dry-fitted, and finished by the same pair of hands. You'll deal with me from the first sketch to the day you drive it away — and after, when you want a shelf added or a second battery in.</p>
       <div style="display: flex; align-items: center; gap: 14px; padding-top: 6px">
-        <img src="uploads/logo.png" alt="" style="width: 40px; height: 40px" />
+        <img src="uploads/IMG_9590%20(1).png" alt="" style="width: 40px; height: 40px" />
         <span style="font-family: 'Zilla Slab', serif; font-style: italic; font-size: 17px; color: #7A6A4F">Plus Olly, workshop dog and quality control.</span>
       </div>
     </div>
@@ -358,7 +241,7 @@ document.addEventListener('click', function(e) {
 
       <sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
         <div style="background: #FBF4E4; color: #47563C; border-radius: 6px; padding: 44px; display: grid; gap: 14px; justify-items: start">
-          <img src="uploads/logo.png" alt="" style="width: 64px; height: 64px" />
+          <img src="uploads/IMG_9590%20(1).png" alt="" style="width: 64px; height: 64px" />
           <span style="font-family: 'Zilla Slab', serif; font-size: 28px">Thanks — that's landed.</span>
           <span style="font-size: 17px; line-height: 1.6; color: #55563E">I'll be in touch from hello@oasisvans.co.au within a couple of days. If it's urgent, DM the Instagram.</span>
           <button onClick="{{ reset }}" style="margin-top: 8px; background: none; border: 1px solid rgba(71,86,60,0.3); color: #47563C; padding: 12px 22px; border-radius: 999px; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer" style-hover="background: #E2661F; border-color: #E2661F; color: #FFF6E6">Send another</button>
@@ -400,7 +283,7 @@ document.addEventListener('click', function(e) {
 
   <footer style="background: #F7EEDC; padding: 44px 40px; display: flex; flex-wrap: wrap; gap: 20px; align-items: center; justify-content: space-between">
     <div style="display: flex; align-items: center; gap: 14px">
-      <img src="uploads/logo.png" alt="Oasis Van Fit Outs" style="width: 44px; height: 44px" />
+      <img src="uploads/IMG_9590%20(1).png" alt="Oasis Van Fit Outs" style="width: 44px; height: 44px" />
       <span style="font-size: 14px; color: #7A6A4F">Oasis Van Fit Outs — Noosa, QLD</span>
     </div>
     <div style="display: flex; flex-wrap: wrap; gap: 24px; font-size: 14px; color: #7A6A4F">
@@ -413,9 +296,61 @@ document.addEventListener('click', function(e) {
 </x-dc>
 <script type="text/x-dc" data-dc-script data-props="{&quot;lightboxEnabled&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Gallery&quot;},&quot;animate&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
 class Component extends DCLogic {
-  state = { sent: false, lightbox: null, lightboxCaption: "" };
+  state = { sent: false, lightbox: null, lightboxCaption: "", menuOpen: false };
+
+  applyResponsive = () => {
+    const root = document.querySelector("#top") ? document.body : document.body;
+    const w = Math.min(window.innerWidth, root.clientWidth || window.innerWidth);
+    const narrow = w <= 760;
+    const mid = w <= 1080;
+    const q = (s) => Array.from(document.querySelectorAll(s));
+    const set = (els, prop, val) => els.forEach((el) => { el.style[prop] = val; });
+
+    set(q("[data-menu-btn]"), "display", narrow ? "flex" : "none");
+    set(q("[data-desktop-nav]"), "display", narrow ? "none" : "flex");
+    if (!narrow && this.state.menuOpen) this.setState({ menuOpen: false });
+
+    set(q("header"), "padding", narrow ? "10px 18px" : "14px 40px");
+    q("section, footer").forEach((el) => {
+      if (!el.dataset.padBase) el.dataset.padBase = el.style.padding || "";
+      const base = el.dataset.padBase;
+      const m = base.match(/^(\d+)px (\d+)px$/);
+      if (!m) return;
+      const v = +m[1], h = +m[2];
+      if (narrow) el.style.padding = Math.round(v * 0.6) + "px 20px";
+      else if (mid) el.style.padding = Math.round(v * 0.8) + "px 28px";
+      else el.style.padding = base;
+    });
+
+    const hero = document.getElementById("top");
+    if (hero) {
+      hero.style.minHeight = narrow ? "82vh" : "88vh";
+      hero.style.backgroundPosition = narrow ? "62% center" : "center";
+    }
+
+    const gal = document.querySelector("#work > div:last-child");
+    if (gal) {
+      gal.style.gridTemplateColumns = narrow ? "repeat(2, 1fr)" : (mid ? "repeat(3, 1fr)" : "repeat(4, 1fr)");
+      gal.style.gridAutoRows = narrow ? "132px" : (mid ? "180px" : "220px");
+      gal.style.gap = narrow ? "8px" : "14px";
+    }
+
+    q("#contact form > div[style*='1fr 1fr']").forEach((el) => { el.style.gridTemplateColumns = narrow ? "1fr" : "1fr 1fr"; });
+    q("#contact form").forEach((el) => { el.style.padding = narrow ? "24px 20px" : "36px"; });
+    q("#builder").forEach((el) => { el.style.gap = narrow ? "36px" : "56px"; });
+    q("#builder img[alt]").forEach((el) => { if (el.style.height) el.style.height = narrow ? "380px" : "560px"; });
+    q("#builder [style*='bottom: -20px']").forEach((el) => {
+      el.style.left = narrow ? "10px" : "-20px";
+      el.style.bottom = narrow ? "10px" : "-20px";
+      el.style.maxWidth = narrow ? "200px" : "260px";
+    });
+  };
 
   componentDidMount() {
+    this.applyResponsive();
+    this._onResize = () => { clearTimeout(this._rt); this._rt = setTimeout(this.applyResponsive, 120); };
+    window.addEventListener("resize", this._onResize);
+    if (window.ResizeObserver) { this._ro = new ResizeObserver(this._onResize); this._ro.observe(document.body); }
     if ((this.props.animate ?? true) === false) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     const root = document.body;
@@ -463,20 +398,28 @@ class Component extends DCLogic {
     });
   }
 
-  componentWillUnmount() { if (this._io) this._io.disconnect(); }
+  componentDidUpdate() { this.applyResponsive(); }
+
+  componentWillUnmount() {
+    if (this._io) this._io.disconnect();
+    if (this._onResize) window.removeEventListener("resize", this._onResize);
+    if (this._ro) this._ro.disconnect();
+  }
 
   renderVals() {
     const enabled = this.props.lightboxEnabled ?? true;
     return {
       sent: this.state.sent,
+      menuOpen: this.state.menuOpen,
+      toggleMenu: () => this.setState((s) => ({ menuOpen: !s.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
       notSent: !this.state.sent,
       lightbox: this.state.lightbox,
       lightboxCaption: this.state.lightboxCaption,
       openImage: (e) => {
         if (!enabled) return;
         const fig = e.currentTarget;
-        const im = fig.querySelector("img");
-        this.setState({ lightbox: (im && (im.currentSrc || im.src)) || fig.getAttribute("data-src"), lightboxCaption: fig.getAttribute("data-cap") || "" });
+        this.setState({ lightbox: fig.getAttribute("data-src"), lightboxCaption: fig.getAttribute("data-cap") || "" });
       },
       closeImage: () => this.setState({ lightbox: null }),
       submit: (e) => { e.preventDefault(); this.setState({ sent: true }); },
