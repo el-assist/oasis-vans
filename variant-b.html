@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oasis Van Fit Outs — Bespoke Van Conversions, Sunshine Coast</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#1a1714;
+  --bg-warm:#231f1a;
+  --bg-card:#2a2520;
+  --sand:#f0e8da;
+  --sand-muted:#c4b9a8;
+  --cream:#faf5ed;
+  --orange:#e07a3a;
+  --orange-glow:#f09050;
+  --navy:#2a4a6e;
+  --navy-deep:#1b3350;
+  --gold:#c9a45c;
+  --gold-muted:rgba(201,164,92,.3);
+  --text-primary:#f0e8da;
+  --text-muted:#a69b8a;
+  --text-dim:#7a7068;
+  --border:rgba(240,232,218,.1);
+  --radius:8px;
+  --radius-lg:16px;
+  --radius-xl:24px;
+  --font-sans:'Space Grotesk',system-ui,sans-serif;
+  --font-serif:'Lora',Georgia,serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{
+  font-family:var(--font-sans);
+  color:var(--text-primary);
+  background:var(--bg);
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none}
+
+/* NAV */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(26,23,20,.85);
+  backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+}
+.nav-inner{
+  max-width:1280px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 32px;
+}
+.nav-left{display:flex;align-items:center;gap:14px}
+.nav-left img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.nav-brand{font-weight:600;font-size:1rem;letter-spacing:.02em}
+.nav-right{display:flex;align-items:center;gap:32px}
+.nav-right a{font-size:.85rem;font-weight:500;color:var(--text-muted);transition:color .2s}
+.nav-right a:hover{color:var(--cream)}
+.nav-cta{
+  background:var(--orange);color:var(--bg);
+  padding:10px 24px;border-radius:var(--radius);
+  font-size:.85rem;font-weight:600;
+  transition:background .2s;
+}
+.nav-cta:hover{background:var(--orange-glow)}
+.mob-toggle{display:none;background:none;padding:8px;color:var(--cream)}
+.mob-toggle svg{width:24px;height:24px}
+
+/* HERO — SPLIT LAYOUT */
+.hero{
+  min-height:100vh;min-height:100svh;
+  display:grid;grid-template-columns:1fr 1fr;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:120px 64px 80px;
+}
+.hero-eyebrow{
+  font-size:.72rem;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:20px;
+}
+.hero h1{
+  font-family:var(--font-serif);
+  font-size:clamp(2.4rem,4.5vw,3.8rem);
+  line-height:1.12;
+  color:var(--cream);
+  margin-bottom:20px;
+}
+.hero h1 em{
+  font-style:italic;color:var(--orange);
+}
+.hero-body{
+  font-size:1.05rem;color:var(--text-muted);
+  line-height:1.75;max-width:440px;
+  margin-bottom:36px;
+}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px}
+.btn-warm{
+  background:var(--orange);color:var(--bg);
+  padding:14px 32px;border-radius:var(--radius);
+  font-size:.95rem;font-weight:600;
+  transition:background .2s,transform .15s;
+}
+.btn-warm:hover{background:var(--orange-glow);transform:translateY(-1px)}
+.btn-ghost{
+  border:1.5px solid var(--border);
+  color:var(--cream);
+  padding:14px 32px;border-radius:var(--radius);
+  font-size:.95rem;font-weight:500;
+  transition:border-color .2s,background .2s;
+}
+.btn-ghost:hover{border-color:var(--sand-muted);background:rgba(240,232,218,.05)}
+.hero-stats{display:flex;gap:40px}
+.hero-stat strong{
+  display:block;font-size:1.4rem;
+  font-family:var(--font-serif);color:var(--gold);
+}
+.hero-stat span{font-size:.75rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em}
+.hero-right{
+  position:relative;overflow:hidden;
+}
+.hero-right img{
+  width:100%;height:100%;object-fit:cover;
+}
+.hero-right::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--bg) 0%,transparent 15%);
+}
+
+/* SECTION HELPERS */
+.sec{max-width:1280px;margin:0 auto;padding:100px 32px}
+.sec-label{
+  font-size:.7rem;font-weight:600;
+  letter-spacing:.15em;text-transform:uppercase;
+  color:var(--orange);margin-bottom:10px;
+}
+.sec-title{
+  font-family:var(--font-serif);
+  font-size:clamp(1.6rem,3vw,2.4rem);
+  line-height:1.2;margin-bottom:12px;
+  color:var(--cream);
+}
+.sec-sub{
+  font-size:1rem;color:var(--text-muted);
+  max-width:520px;line-height:1.7;margin-bottom:48px;
+}
+
+/* ABOUT — HORIZONTAL */
+.about-wrap{
+  display:grid;grid-template-columns:1.1fr 1fr;gap:56px;
+  align-items:center;
+}
+.about-imgs{
+  display:grid;grid-template-columns:1fr 1fr;gap:12px;
+}
+.about-imgs .ai{border-radius:var(--radius-lg);overflow:hidden}
+.about-imgs .ai img{width:100%;height:100%;object-fit:cover}
+.about-imgs .ai:first-child{
+  grid-row:span 2;aspect-ratio:3/4;
+}
+.about-imgs .ai:nth-child(2){aspect-ratio:1/1}
+.about-imgs .ai:nth-child(3){aspect-ratio:1/1}
+.about-copy p{
+  color:var(--text-muted);line-height:1.8;
+  margin-bottom:16px;font-size:.95rem;
+}
+.about-copy .sig{
+  margin-top:28px;padding-top:24px;
+  border-top:1px solid var(--border);
+}
+.about-copy .sig strong{
+  display:block;font-size:1rem;color:var(--cream);
+  margin-bottom:2px;
+}
+.about-copy .sig span{font-size:.82rem;color:var(--text-dim)}
+
+/* GALLERY — MASONRY */
+.gallery{
+  columns:3;column-gap:12px;
+}
+.gal-item{
+  break-inside:avoid;margin-bottom:12px;
+  border-radius:var(--radius-lg);overflow:hidden;
+  position:relative;cursor:pointer;
+}
+.gal-item img{
+  width:100%;display:block;
+  transition:transform .6s ease,filter .4s;
+}
+.gal-item:hover img{transform:scale(1.03);filter:brightness(1.05)}
+.gal-item .gal-cap{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:16px 18px;
+  background:linear-gradient(0deg,rgba(26,23,20,.7),transparent);
+  font-size:.78rem;color:var(--sand-muted);
+  opacity:0;transition:opacity .3s;
+}
+.gal-item:hover .gal-cap{opacity:1}
+
+/* DOG CALLOUT */
+.dog-callout{
+  background:var(--bg-warm);
+  border-radius:var(--radius-xl);
+  overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;
+  max-width:1280px;margin:0 auto;
+}
+.dog-callout img{width:100%;height:100%;object-fit:cover;min-height:300px}
+.dog-callout-text{
+  padding:48px 40px;display:flex;
+  flex-direction:column;justify-content:center;
+}
+.dog-callout-text h3{
+  font-family:var(--font-serif);
+  font-size:1.4rem;margin-bottom:12px;
+  color:var(--cream);
+}
+.dog-callout-text p{
+  color:var(--text-muted);line-height:1.8;font-size:.92rem;
+}
+
+/* REVIEWS */
+.reviews-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rev{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-lg);
+  padding:32px 28px;
+  position:relative;
+}
+.rev-stars{color:var(--gold);margin-bottom:14px;letter-spacing:2px}
+.rev p{
+  color:var(--text-muted);line-height:1.75;
+  font-family:var(--font-serif);
+  font-style:italic;font-size:.92rem;
+  margin-bottom:20px;
+}
+.rev-author{font-weight:600;font-size:.88rem;color:var(--cream)}
+.rev-loc{font-size:.78rem;color:var(--text-dim)}
+.rev-ph{
+  display:inline-block;margin-top:8px;
+  font-size:.68rem;color:var(--text-dim);
+  background:var(--bg);padding:2px 8px;
+  border-radius:4px;
+}
+
+/* CONTACT */
+.contact-split{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.contact-details h3{
+  font-family:var(--font-serif);
+  font-size:1.5rem;margin-bottom:16px;
+  color:var(--cream);
+}
+.contact-details>p{
+  color:var(--text-muted);line-height:1.8;
+  margin-bottom:32px;font-size:.95rem;
+}
+.c-line{
+  display:flex;align-items:center;gap:14px;
+  margin-bottom:18px;
+}
+.c-icon{
+  width:42px;height:42px;border-radius:50%;
+  background:var(--gold-muted);
+  display:flex;align-items:center;justify-content:center;
+  color:var(--gold);font-size:1rem;flex-shrink:0;
+}
+.c-line a,.c-line span{font-size:.95rem;color:var(--sand-muted)}
+.c-line a:hover{color:var(--cream)}
+.ig-btn{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:12px;
+  background:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  color:#fff;padding:11px 22px;
+  border-radius:var(--radius);font-weight:600;font-size:.88rem;
+  transition:opacity .2s;
+}
+.ig-btn:hover{opacity:.85}
+.c-form{
+  background:var(--bg-card);
+  border:1px solid var(--border);
+  border-radius:var(--radius-xl);
+  padding:36px 32px;
+}
+.fg{margin-bottom:20px}
+.fg label{
+  display:block;font-size:.82rem;font-weight:600;
+  margin-bottom:6px;color:var(--sand-muted);
+}
+.fg input,.fg textarea{
+  width:100%;padding:12px 16px;
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  background:var(--bg);
+  font-family:var(--font-sans);font-size:.92rem;
+  color:var(--cream);transition:border-color .2s;
+}
+.fg input::placeholder,.fg textarea::placeholder{color:var(--text-dim)}
+.fg input:focus,.fg textarea:focus{
+  outline:none;border-color:var(--orange);
+}
+.fg textarea{resize:vertical;min-height:110px}
+.submit-btn{
+  width:100%;background:var(--orange);color:var(--bg);
+  padding:14px;border-radius:var(--radius);
+  font-size:.95rem;font-weight:600;
+  transition:background .2s;
+}
+.submit-btn:hover{background:var(--orange-glow)}
+
+/* FOOTER */
+.footer{
+  border-top:1px solid var(--border);
+  padding:40px 32px 28px;
+  text-align:center;
+  max-width:1280px;margin:0 auto;
+}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-brand{display:flex;align-items:center;gap:10px}
+.footer-brand img{width:36px;height:36px;border-radius:50%;object-fit:cover}
+.footer-brand span{font-weight:600;font-size:.9rem}
+.footer-mid{font-size:.82rem;color:var(--text-dim);font-family:var(--font-serif);font-style:italic}
+.footer-right{font-size:.72rem;color:var(--text-dim)}
+
+/* LIGHTBOX */
+.lb{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(26,23,20,.94);
+  display:none;align-items:center;justify-content:center;
+  opacity:0;transition:opacity .3s;
+}
+.lb.on{display:flex;opacity:1}
+.lb img{max-width:90vw;max-height:85vh;border-radius:var(--radius-lg);object-fit:contain}
+.lb-x{
+  position:absolute;top:20px;right:28px;
+  background:rgba(240,232,218,.1);border:none;
+  color:var(--cream);width:44px;height:44px;
+  border-radius:50%;font-size:1.3rem;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;transition:background .2s;
+}
+.lb-x:hover{background:rgba(240,232,218,.2)}
+
+/* MOBILE MENU */
+.mob-menu{
+  display:none;position:fixed;inset:0;z-index:99;
+  background:var(--bg);
+  flex-direction:column;align-items:center;justify-content:center;gap:28px;
+}
+.mob-menu.open{display:flex}
+.mob-menu a{font-size:1.2rem;font-weight:600;color:var(--cream)}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .nav-right a:not(.nav-cta){display:none}
+  .mob-toggle{display:block}
+  .hero{grid-template-columns:1fr;min-height:auto}
+  .hero-left{padding:120px 28px 60px}
+  .hero-right{height:50vh}
+  .hero-right::after{
+    background:linear-gradient(180deg,var(--bg) 0%,transparent 20%);
+  }
+  .hero-stats{gap:28px}
+  .about-wrap{grid-template-columns:1fr;gap:32px}
+  .about-imgs{order:-1}
+  .gallery{columns:2}
+  .dog-callout{grid-template-columns:1fr}
+  .reviews-row{grid-template-columns:1fr;gap:16px}
+  .contact-split{grid-template-columns:1fr;gap:32px}
+  .sec{padding:72px 24px}
+  .footer-inner{flex-direction:column;text-align:center}
+}
+@media(max-width:600px){
+  .gallery{columns:1}
+  .hero-left{padding:100px 20px 40px}
+  .hero-right{height:40vh}
+  .about-imgs{grid-template-columns:1fr}
+  .about-imgs .ai:first-child{grid-row:span 1;aspect-ratio:16/9}
+  .about-imgs .ai:nth-child(2),.about-imgs .ai:nth-child(3){display:none}
+  .c-form{padding:24px 20px}
+  .dog-callout-text{padding:28px 24px}
+}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .gal-item img{transition:none}
+  .lb{transition:none}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-left">
+      <img src="assets/images/logo-circle.jpg" alt="Oasis Van Fit Outs" width="44" height="44">
+      <span class="nav-brand">Oasis Van Fit Outs</span>
+    </div>
+    <div class="nav-right">
+      <a href="#about">About</a>
+      <a href="#gallery">Work</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact" class="nav-cta">Get a Quote</a>
+      <button class="mob-toggle" onclick="document.getElementById('mobMenu').classList.toggle('open')" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mob-menu" id="mobMenu">
+  <a href="#about" onclick="document.getElementById('mobMenu').classList.remove('open')">About</a>
+  <a href="#gallery" onclick="document.getElementById('mobMenu').classList.remove('open')">Work</a>
+  <a href="#reviews" onclick="document.getElementById('mobMenu').classList.remove('open')">Reviews</a>
+  <a href="#contact" onclick="document.getElementById('mobMenu').classList.remove('open')">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Sunshine Coast, QLD · Est. 2014</div>
+    <h1>Your van,<br>your <em>oasis</em>.</h1>
+    <p class="hero-body">Bespoke camper van conversions handcrafted on the Sunshine Coast. Premium materials, custom layouts, built for the road ahead.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-warm">Start Your Build</a>
+      <a href="#gallery" class="btn-ghost">See Our Work</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>10+</strong><span>Years</span></div>
+      <div class="hero-stat"><strong>QLD</strong><span>Based</span></div>
+      <div class="hero-stat"><strong>100%</strong><span>Custom</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="assets/images/van-exterior-dusk.jpg" alt="Black Sprinter van with doors open at dusk, surfboard visible" loading="eager">
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec" id="about">
+  <div class="sec-label">About</div>
+  <div class="about-wrap">
+    <div class="about-imgs">
+      <div class="ai"><img src="assets/images/kitchen-pullout-brass.jpg" alt="Walnut countertop with brass faucet" loading="lazy"></div>
+      <div class="ai"><img src="assets/images/kitchen-moka-pot.jpg" alt="Pull-out shelf with moka pot" loading="lazy"></div>
+      <div class="ai"><img src="assets/images/bed-fridge-white.jpg" alt="Bed and fridge area, clean white design" loading="lazy"></div>
+    </div>
+    <div class="about-copy">
+      <div class="sec-title" style="margin-bottom:20px">Crafted for the road, designed for living</div>
+      <p>George Lewis has spent over a decade converting vans into homes that move. What began as building his own rig for surf trips along the coast turned into a full-time pursuit of craft.</p>
+      <p>Every Oasis build is a one-off. White shiplap paneling, butcher block countertops, brass tapware, herringbone floors — the same premium finishes you'd expect in a coastal home, engineered to handle life on the road.</p>
+      <p>Based in Noosaville, George works directly with each client from concept to handover. No production line, no shortcuts — just considered design and honest workmanship.</p>
+      <div class="sig">
+        <strong>George Lewis</strong>
+        <span>Founder, Oasis Van Fit Outs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="sec" id="gallery">
+  <div class="sec-label">Our Work</div>
+  <div class="sec-title">Recent Builds</div>
+  <div class="sec-sub">White shiplap, walnut counters, brass hardware, herringbone floors. Each van is designed and built as a one-of-a-kind.</div>
+  <div class="gallery">
+    <div class="gal-item" onclick="openLB(this)">
+      <img src="assets/images/navy-kitchen-full.jpg" alt="Navy blue cabinets with gold hardware and herringbone floor" loading="lazy">
+      <div class="gal-cap">Navy kitchen · Gold hardware · Herringbone floor</div>
+    </div>
+    <div class="gal-item" onclick="openLB(this)">
+      <img src="assets/images/kitchen-full-wood.jpg" alt="Full kitchen with warm wood, black oven" loading="lazy">
+      <div class="gal-cap">Warm wood kitchen · Integrated oven</div>
+    </div>
+    <div class="gal-item" onclick="openLB(this)">
+      <img src="assets/images/bed-platform-white.jpg" alt="White bed platform with ventilation holes and storage" loading="lazy">
+      <div class="gal-cap">Bed platform · Ventilated · Under-bed storage</div>
+    </div>
+    <div class="gal-item" onclick="openLB(this)">
+      <img src="assets/images/kitchen-fridge-scandi.jpg" alt="Scandinavian style kitchen area with fridge" loading="lazy">
+      <div class="gal-cap">Scandi kitchen · Integrated fridge</div>
+    </div>
+    <div class="gal-item" onclick="openLB(this)">
+      <img src="assets/images/side-door-table.jpg" alt="Fold-out table with swivel arm and storage drawers" loading="lazy">
+      <div class="gal-cap">Fold-out dining · Swivel arm table</div>
+    </div>
+    <div class="gal-item" onclick="openLB(this)">
+      <img src="assets/images/kitchen-pullout-brass.jpg" alt="Walnut countertop with brass faucet and pullout drawer" loading="lazy">
+      <div class="gal-cap">Walnut counter · Brass tapware</div>
+    </div>
+    <div class="gal-item" onclick="openLB(this)">
+      <img src="assets/images/bed-rear-white.jpg" alt="Rear view white van build with mattress" loading="lazy">
+      <div class="gal-cap">Rear bed layout · Clean white build</div>
+    </div>
+    <div class="gal-item" onclick="openLB(this)">
+      <img src="assets/images/bed-fridge-white.jpg" alt="Bed and fridge area in clean white design" loading="lazy">
+      <div class="gal-cap">Bed + fridge integration</div>
+    </div>
+  </div>
+</section>
+
+<!-- DOG CALLOUT -->
+<div style="padding:0 32px;max-width:1280px;margin:0 auto">
+  <div class="dog-callout">
+    <img src="assets/images/dog-in-van.jpg" alt="Bernese Mountain Dog lying on rug inside finished van" loading="lazy">
+    <div class="dog-callout-text">
+      <h3>Road-tested. Dog-approved.</h3>
+      <p>Our builds are made for real life — kids, gear, and yes, the four-legged co-pilot. Every layout accounts for how you actually travel, not just how it photographs (though it photographs pretty well too).</p>
+    </div>
+  </div>
+</div>
+
+<!-- REVIEWS -->
+<section class="sec" id="reviews">
+  <div class="sec-label">Reviews</div>
+  <div class="sec-title">What Clients Say</div>
+  <div class="sec-sub">Feedback from people who are out there living in their builds.</div>
+  <div class="reviews-row">
+    <div class="rev">
+      <div class="rev-stars">★★★★★</div>
+      <p>"George built our Sprinter exactly how we pictured it. The cabinetry detail and brass hardware are next level. Six months on the road and everything is rock solid."</p>
+      <div class="rev-author">Sarah & Tom M.</div>
+      <div class="rev-loc">Sunshine Coast, QLD</div>
+      <div class="rev-ph">Placeholder testimonial</div>
+    </div>
+    <div class="rev">
+      <div class="rev-stars">★★★★★</div>
+      <p>"The herringbone flooring, walnut counters, integrated fridge — it genuinely feels like a boutique hotel on wheels. We get compliments at every campsite. Worth the wait."</p>
+      <div class="rev-author">James K.</div>
+      <div class="rev-loc">Brisbane, QLD</div>
+      <div class="rev-ph">Placeholder testimonial</div>
+    </div>
+    <div class="rev">
+      <div class="rev-stars">★★★★★</div>
+      <p>"We compared a lot of builders before going with Oasis. George's communication throughout the process was excellent and the final quality exceeded what we expected. Highly recommend."</p>
+      <div class="rev-author">Mel & Dave R.</div>
+      <div class="rev-loc">Gold Coast, QLD</div>
+      <div class="rev-ph">Placeholder testimonial</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="sec" id="contact">
+  <div class="sec-label">Contact</div>
+  <div class="sec-title">Let's Build Your Oasis</div>
+  <div class="sec-sub">Ready to talk about your dream van? Reach out and George will get back to you.</div>
+  <div class="contact-split">
+    <div class="contact-details">
+      <h3>Reach Out</h3>
+      <p>Based in Noosaville on Queensland's Sunshine Coast. We work with clients across QLD and beyond. No obligation to start a conversation.</p>
+      <div class="c-line">
+        <div class="c-icon">✉</div>
+        <a href="mailto:Oasis.vanss@gmail.com">Oasis.vanss@gmail.com</a>
+      </div>
+      <div class="c-line">
+        <div class="c-icon">☎</div>
+        <a href="tel:+61426470633">0426 470 633</a>
+      </div>
+      <div class="c-line">
+        <div class="c-icon">◉</div>
+        <span>Noosaville, Sunshine Coast, QLD</span>
+      </div>
+      <a href="https://instagram.com/oasis.vans" target="_blank" rel="noopener" class="ig-btn">
+        @oasis.vans on Instagram
+      </a>
+    </div>
+    <form class="c-form" onsubmit="event.preventDefault();alert('Thanks! George will be in touch soon.')">
+      <div class="fg">
+        <label for="fn">Name</label>
+        <input type="text" id="fn" name="name" placeholder="Your name" required>
+      </div>
+      <div class="fg">
+        <label for="em">Email</label>
+        <input type="email" id="em" name="email" placeholder="you@email.com" required>
+      </div>
+      <div class="fg">
+        <label for="ph">Phone</label>
+        <input type="tel" id="ph" name="phone" placeholder="04XX XXX XXX">
+      </div>
+      <div class="fg">
+        <label for="msg">About Your Build</label>
+        <textarea id="msg" name="message" placeholder="Van type, layout ideas, timeline, budget range..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer" style="padding-bottom:48px">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="assets/images/logo-circle.jpg" alt="Oasis Van Fit Outs" width="36" height="36">
+      <span>Oasis Van Fit Outs</span>
+    </div>
+    <div class="footer-mid">Your van, your oasis.</div>
+    <div class="footer-right">&copy; 2026 Oasis Van Fit Outs · Sunshine Coast, QLD</div>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lb" id="lb" onclick="closeLB()">
+  <button class="lb-x" aria-label="Close">✕</button>
+  <img src="" alt="" id="lbImg">
+</div>
+
+<script>
+function openLB(el){
+  const img=el.querySelector('img');
+  const lb=document.getElementById('lb');
+  document.getElementById('lbImg').src=img.src;
+  document.getElementById('lbImg').alt=img.alt;
+  lb.classList.add('on');
+  document.body.style.overflow='hidden';
+}
+function closeLB(){
+  document.getElementById('lb').classList.remove('on');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLB()});
+</script>
+</body>
+</html>
